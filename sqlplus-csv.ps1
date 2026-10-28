@@ -1,3 +1,24 @@
+<#
+.SYNOPSIS
+    sql文を実行してcsvを生成する
+.DESCRIPTION
+    PowerShellからsqlを実行してcsvを生成するためのsqlplusのラッパーです
+.PARAMETER ConnectionString
+    DBの接続文字列
+.PARAMETER SqlFile
+    sqlファイルのパス
+.PARAMETER CsvFile
+    出力するcsvファイルのパス
+.EXAMPLE
+    Invoke-OracleCsv `
+    -ConnectionString "scott/tiger@localhost:1521/orclpdb" `
+    -SqlFile "test.sql" `
+    -CsvFile "test.csv"
+.NOTES
+
+#>
+
+
 function New-SqlPlusScript {
     param(
         [string]$SqlText,
@@ -26,9 +47,9 @@ EXIT
 
 function Invoke-OracleCsv {
     param(
+        [string]$ConnectionString
         [string]$SqlFile,
         [string]$CsvFile,
-        [string]$ConnectionString
     )
     $rawSql = Get-Content $SqlFile -Raw
 
@@ -43,4 +64,4 @@ function Invoke-OracleCsv {
     }
 }
 
-Invoke-OracleCsv -SqlFile "test.sql" -CsvFile "test.csv"
+# Invoke-OracleCsv -SqlFile "test.sql" -CsvFile "test.csv"

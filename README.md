@@ -1,3 +1,5 @@
 # sqlplus-csv
-sqlplusでcsvを出力するためのラッパー
+PowerShellからsqlを実行してcsvを出力するためのsqlplusのラッパー
+
 開発中
+
